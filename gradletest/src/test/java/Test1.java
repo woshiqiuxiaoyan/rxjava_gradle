@@ -40,33 +40,32 @@ public class Test1 {
             log.info("=====订阅成功2====");
 
 
-            /*observableEmitter.setDisposable(new Disposable() {
+            observableEmitter.setDisposable(new Disposable() {
                 @Override
                 public void dispose() {
-                    log.info("=====设置dispose=====");
+                    log.info("=====dispose 被调用了=====");
                 }
 
                 @Override
                 public boolean isDisposed() {
                     return true;
                 }
-            });*/
+            });
 
             observableEmitter.onNext("yandaye1");
 
             observableEmitter.onNext("yandaye2");
 
-            observableEmitter.onNext("中断");
+//            observableEmitter.onNext("中断");
 
             observableEmitter.onNext("yandaye3");
 
             /**
-             * onComplete 和 tryOnError 互斥
+             * onComplete 和 tryOnError 互斥  complete 和 error 最终都会调用 dispose
              */
             observableEmitter.onComplete();
 
             observableEmitter.tryOnError(new BizException("customException"));
-//
         });
 
 
