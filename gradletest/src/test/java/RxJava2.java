@@ -1,4 +1,4 @@
-import exception.BizException;
+import com.yan.exception.BizException;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -13,7 +13,7 @@ import org.junit.Test;
  * @version: 1.0
  */
 @Slf4j
-public class Test1 {
+public class RxJava2 {
 
 
     @Test
@@ -40,12 +40,15 @@ public class Test1 {
             log.info("=====订阅成功2====");
 
 
-            observableEmitter.setDisposable(new Disposable() {
+             observableEmitter.setDisposable(new Disposable() {
                 @Override
                 public void dispose() {
                     log.info("=====dispose 被调用了=====");
                 }
 
+                /**
+                 * 自己定义里面自己用的 ， 和源码里面判断 的不同
+                 */
                 @Override
                 public boolean isDisposed() {
                     return true;
@@ -76,10 +79,13 @@ public class Test1 {
 
             private Disposable disposable;
 
+
+
+
             @Override
             public void onSubscribe(Disposable disposable) {
                 log.info(String.format("======= 发起订阅1 :%s ",disposable));
-               this.disposable=disposable;
+                this.disposable=disposable;
 
             }
 
@@ -90,6 +96,11 @@ public class Test1 {
                     log.info("=============我被中断了=============");
                     disposable.dispose();
                 }
+
+                if(disposable.isDisposed()){
+                    disposable.dispose();
+                }
+
             }
 
             @Override
