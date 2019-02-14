@@ -27,4 +27,19 @@ public class SpringTest5 {
         System.out.println("======================   "+factory);
     }
 
+
+    /**
+     * test beanNameAware
+     */
+    @Test
+    public void test2() {
+        logger.info("=============我进来了================");
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/spring-test.xml");
+        PeopleFactory factory=  applicationContext.getBean(PeopleFactory.class);
+        System.out.println("======================   "+factory);
+    }
+
+
+
+
 }

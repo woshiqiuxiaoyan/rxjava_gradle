@@ -13,4 +13,8 @@
 
     <bean id="myBeanFactoryPostProcessor" class="com.yan.beanfactorypostprocessor.MyBeanFactoryPostProcessor"/>
 
+    <bean id="myBeanNameAware" class="com.yan.aware.MyBeanNameAware"/>
+
+    <bean id="myApplication" class="com.yan.aware.MyApplicationAware"/>
+
 </beans>
