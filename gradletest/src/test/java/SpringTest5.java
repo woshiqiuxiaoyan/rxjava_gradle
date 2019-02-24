@@ -25,6 +25,10 @@ public class SpringTest5 {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/spring-test.xml");
         PeopleFactory factory=  applicationContext.getBean(PeopleFactory.class);
         System.out.println("======================   "+factory);
+
+        PeopleVO peopleVO =applicationContext.getBean(PeopleVO.class);
+        System.out.println(peopleVO);
+
     }
 
 

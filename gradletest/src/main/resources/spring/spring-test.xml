@@ -4,7 +4,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="people" class="com.yan.vo.PeopleVO" factory-bean="myfactory" factory-method="createPeople"   />
+    <bean id="people" class="com.yan.vo.PeopleVO" factory-bean="myfactory" factory-method="createPeople"   >
+           <property name="character" ref="character"/>
+    </bean>
+
+    <bean id="character" class="com.yan.vo.Character">
+        <property name="desc" value="i am value"/>
+    </bean>
+
 
     <bean id="myfactory" class="com.yan.commonfactory.PeopleFactory" >
         <property name="yandaye" value="yan"/>
